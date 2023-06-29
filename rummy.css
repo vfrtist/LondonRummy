@@ -25,7 +25,6 @@ body {
     background-image: url(marek-piwnicki-geC1KN701Lw-unsplash.jpg);
     background-attachment: fixed;
     background-size: cover;
-    /* transition: all .5s; */
 }
 
 /* ---------------- Sidebar Stuff ---------------- */
@@ -46,14 +45,11 @@ body {
 
 .container {
     display: none;
-    /* opacity: 0; */
 }
 
-.rulesBar:hover {
-    >.arrow {
+.rulesBar:hover .arrow{
         fill: white;
         rotate: 0deg;
-    }
 }
 
 .arrow {
@@ -72,25 +68,25 @@ body {
     list-style: none;
     counter-reset: new-counter;
     padding: 0;
-
     font-family: var(--font1);
-
-    >li {
-        counter-increment: new-counter;
-
-        &:nth-child(-n+9)::before {
-            content: '0' counter(new-counter);
-        }
-
-        &::before {
-            content: counter(new-counter);
-            font-weight: 800;
-            margin-right: 12px;
-            padding: 4px;
-            font-family: var(--font2);
-        }
-    }
 }
+
+.rules li {
+    counter-increment: new-counter;
+}
+    
+.rules li:nth-child(-n+9)::before {
+    content: '0' counter(new-counter);
+}
+
+.rules li::before {
+    content: counter(new-counter);
+    font-weight: 800;
+    margin-right: 12px;
+    padding: 4px;
+    font-family: var(--font2);
+}
+
 
 h2 {
     margin-bottom: 24px;
@@ -103,12 +99,13 @@ h2 {
     width: 320px;
     background: var(--rulesBackground);
     box-shadow: 0px 0px 20px #6d776f;
-
-    >.container {
-        display: block;
-        animation: enter .45s .35s backwards;
-    }
 }
+
+.out .container {
+    display: block;
+    animation: enter .45s .35s backwards;
+}
+
 
 @keyframes enter {
     0% {
@@ -176,10 +173,10 @@ h2 {
     grid-template-columns: 1fr 1fr;
     font-family: var(--font3);
     justify-items: center;
+}
 
-    >span {
-        text-align: center;
-    }
+.player-data span {
+    text-align: center;
 }
 
 .round {
@@ -204,10 +201,10 @@ input.end {
     border: none;
     border-bottom: 2px solid var(--rulesBackground);
     color: var(--fontColor);
+}
 
-    &::placeholder {
-        color: white;
-    }
+input.end::placeholder {
+    color: white;
 }
 
 span.end {
@@ -236,14 +233,13 @@ span.end {
     padding: 0px;
     transition: border .15s, padding .15s, fill .15s;
     z-index: 2;
-
-    &:hover {
-        border: 2px solid #2d8648;
-        padding: 2px;
-        fill: white;
-    }
 }
 
+.round.end.button:hover {
+    border: 2px solid #2d8648;
+    padding: 2px;
+    fill: white;
+}
 
 /* ---------------------- Edit Player ---------------------- */
 
@@ -255,28 +251,27 @@ span.end {
     width: 26px;
     fill: var(--highlight1);
     transition: fill .15s;
-
-    &:hover {
-        fill: white;
-    }
 }
+
+.player_edit:hover {
+    fill: white;
+}
+
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 60px;
-    /* background-color: #f2eedc; */
-    /* box-shadow: 0px 8px 16px 0px rgba(58, 42, 32, 0.367); */
     z-index: 3;
     flex-direction: column;
     padding: 6px;
     border-radius: 6px;
+}
 
-    >input {
-        margin: 4px;
-        padding: 4px;
-    }
+.dropdown-content input {
+    margin: 4px;
+    padding: 4px;
 }
 
 .show {
@@ -288,15 +283,16 @@ span.end {
 
 .open {
     height: 270px;
-
-    >.player-data>.end {
-        display: block;
-        visibility: visible;
-        opacity: 1;
-        translate: 0;
-        animation: appear .25s backwards;
-    }
 }
+
+.open .player-data .end {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    translate: 0;
+    animation: appear .25s backwards;
+}
+
 
 @keyframes appear {
     0% {
@@ -341,13 +337,14 @@ span.end {
     margin: 20px;
     padding: 10px;
     opacity: 1;
-
-    &:hover {
-        box-shadow: inset 0 0 0 60px var(--highlight);
-        color: black;
-        fill: black;
-    }
 }
+
+.finish:hover {
+    box-shadow: inset 0 0 0 60px var(--highlight);
+    color: black;
+    fill: black;
+}
+
 
 .hide {
     display: none;
