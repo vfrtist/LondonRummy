@@ -12,14 +12,6 @@ const root = document.querySelector(':root')
 const darkButton = document.querySelector('#darkToggle')
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
-if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-        darkToggle()
-    }
-}
-
 function resetVariables() {
     players = document.querySelectorAll('.player');
     success = document.querySelectorAll('.round.end.button');
@@ -93,10 +85,12 @@ for (let edit of editing) {
 //     }
 // })
 
+
+// Add and Remove Person---------------
 addPerson.addEventListener('click', () => {
     let player = players[0].cloneNode(true);
     let title = player.firstElementChild.nextElementSibling;
-    title.value = `Player ${players.length + 1}`;
+    title.innerHTML = `Player ${players.length + 1}`;
     document.querySelector('.board').append(player);
     resetVariables();
 })
@@ -106,6 +100,8 @@ removePerson.addEventListener('click', () => {
     resetVariables();
 })
 
+
+// Dark Mode---------------
 darkButton.addEventListener('click', () => {
     darkToggle()
     // yes dark
@@ -122,4 +118,12 @@ function darkToggle() {
     document.body.classList.toggle('dark-bg');
     darkButton.firstElementChild.classList.toggle('hide');
     darkButton.firstElementChild.nextElementSibling.classList.toggle('hide');
+}
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+        darkToggle()
+    }
 }
