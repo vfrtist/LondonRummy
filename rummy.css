@@ -47,9 +47,9 @@ body {
     display: none;
 }
 
-.rulesBar:hover .arrow{
-        fill: white;
-        rotate: 0deg;
+.rulesBar:hover .arrow {
+    fill: white;
+    rotate: 0deg;
 }
 
 .arrow {
@@ -74,7 +74,7 @@ body {
 .rules li {
     counter-increment: new-counter;
 }
-    
+
 .rules li:nth-child(-n+9)::before {
     content: '0' counter(new-counter);
 }
@@ -337,6 +337,7 @@ span.end {
     margin: 20px;
     padding: 10px;
     opacity: 1;
+    text-align: center;
 }
 
 .finish:hover {
@@ -353,4 +354,52 @@ span.end {
 
 .dark-bg {
     background-image: url(john-towner-JgOeRuGD_Y4-unsplash.jpg);
+}
+
+@media (max-width: 600px) {
+    .buttonsBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+        position: fixed;
+        z-index: 4;
+        bottom: 0;
+        top: auto;
+        flex-direction: row;
+    }
+
+    .player {
+        height: 170px;
+    }
+
+    .open {
+        height: 250px;
+    }
+
+    .player:nth-last-of-type(1) {
+        margin-bottom: 20vh;
+    }
+
+    .name {
+        width: 85%;
+        margin-bottom: 10px;
+    }
+
+    .player_edit {
+        width: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .finish {
+        width: 50px;
+        height: 50px;
+        font-size: 12pt;
+    }
+
+    .out {
+        width: 100vw;
+    }
 }
