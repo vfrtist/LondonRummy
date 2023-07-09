@@ -21,9 +21,11 @@ function resetVariables() {
 
 // open and close round ending ---------------
 end.addEventListener('click', () => {
+    end.innerHTML = 'Add'
     if (endRound === true) {
         addRound()
         addScore()
+        end.innerHTML = 'End'
     };
     for (let element of players) {
         element.classList.toggle('open');
