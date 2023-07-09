@@ -25,18 +25,25 @@ end.addEventListener('click', () => {
         addRound()
         addScore()
     };
-    for (const element of players) {
+    for (let element of players) {
         element.classList.toggle('open');
     };
     endRound = !endRound;
 })
 
 // success button toggle ---------------
-for (const btn of success) {
-    btn.addEventListener('click', () => {
-        btn.classList.toggle('success');
-    })
-}
+document.addEventListener('click', function (e) {
+    const target = e.target.closest('.round.end.button'); // Or any other selector.
+    if (target) {
+        target.classList.toggle('success');
+    }
+});
+
+// for (let btn of success) {
+//     btn.addEventListener('click', () => {
+//         btn.classList.toggle('success');
+//     })
+// }
 
 // sidebar toggle ---------------
 sidebar.addEventListener('click', () => {
@@ -49,9 +56,9 @@ function addRound() {
         if (round.classList.contains('success')) {
             round.classList.toggle('success');
             const roundCount = round.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling;
-            roundCount.value++
-            if (roundCount.value < 10) {
-                roundCount.value = '0' + roundCount.value;
+            roundCount.innerHTML++;
+            if (roundCount.innerHTML < 10) {
+                roundCount.innerHTML = `0${roundCount.innerHTML}`;
             }
         }
     }
@@ -60,7 +67,7 @@ function addRound() {
 function addScore() {
     for (const score of scores) {
         const total = score.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling;
-        total.value = Number(total.value) + Number(score.value);
+        total.innerHTML = Number(total.innerHTML) + Number(score.value);
         score.value = "";
     }
 }
@@ -91,6 +98,7 @@ addPerson.addEventListener('click', () => {
     let player = players[0].cloneNode(true);
     let title = player.firstElementChild.nextElementSibling;
     title.innerHTML = `Player ${players.length + 1}`;
+    player.setAttribute('id', `Player${players.length + 1}`);
     document.querySelector('.board').append(player);
     resetVariables();
 })

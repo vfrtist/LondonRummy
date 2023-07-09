@@ -25,6 +25,7 @@ body {
     background-image: url(marek-piwnicki-geC1KN701Lw-unsplash.jpg);
     background-attachment: fixed;
     background-size: cover;
+    scrollbar-width: none;
 }
 
 /* ---------------- Sidebar Stuff ---------------- */
@@ -402,5 +403,6 @@ span.end {
 
     .out {
         width: 100vw;
+        justify-content: flex-start;
     }
 }
